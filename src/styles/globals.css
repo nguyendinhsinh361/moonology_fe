@@ -1,0 +1,745 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import page-specific styles */
+@import './blog.css';
+@import './about.css';
+@import './contact.css';
+@import './reading.css';
+
+@layer base {
+  body {
+    @apply bg-[#0f0f23] text-text-primary font-sans leading-relaxed min-h-screen overflow-x-hidden relative;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  }
+}
+
+/* Cosmic animated background */
+.cosmic-bg::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+      radial-gradient(circle at 20% 80%, rgba(139, 92, 246, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(251, 191, 36, 0.05) 0%, transparent 50%);
+  animation: cosmic-pulse 8s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: -2;
+}
+
+/* Floating stars */
+.cosmic-bg::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+      radial-gradient(2px 2px at 20px 30px, rgba(248, 250, 252, 0.8), transparent),
+      radial-gradient(2px 2px at 40px 70px, rgba(251, 191, 36, 0.6), transparent),
+      radial-gradient(1px 1px at 90px 40px, rgba(139, 92, 246, 0.8), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  animation: stars-twinkle 20s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-5 md:px-6 lg:px-8 relative z-10;
+  }
+  
+  .responsive-container {
+    @apply mt-24 sm:mt-28 md:mt-24;
+  }
+
+  /* Header with moon theme */
+  .header {
+    @apply text-center py-10 px-5 bg-glass-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/30 mb-8 relative overflow-hidden shadow-cosmic;
+  }
+
+  .header::before {
+    content: '';
+    @apply absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,transparent_70%)] animate-header-glow;
+  }
+
+  .header h1 {
+    @apply text-5xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent mb-4 relative z-10;
+    text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+  }
+
+  .header p {
+    @apply text-lg text-text-secondary relative z-10;
+  }
+
+  /* Main Navigation */
+  .main-nav {
+    @apply fixed top-0 left-0 right-0 z-50 bg-card-bg/90 backdrop-blur-xl border-b border-cosmic-purple/30 shadow-cosmic py-4;
+  }
+  
+  .main-nav .container {
+    @apply flex justify-between items-center;
+  }
+  
+  .nav-brand {
+    @apply flex items-center;
+  }
+  
+  .nav-brand a {
+    @apply flex items-center gap-2 no-underline;
+  }
+  
+  .brand-icon {
+    @apply text-2xl;
+  }
+  
+  .brand-name {
+    @apply text-xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent;
+    text-shadow: 0 0 10px rgba(248, 250, 252, 0.2);
+  }
+
+  /* Mobile menu button */
+  .mobile-menu-button {
+    @apply hidden text-xl text-moon-white bg-transparent border-none cursor-pointer p-2 ml-auto;
+  }
+
+  .nav-list {
+    @apply flex items-center gap-4 list-none flex-wrap;
+  }
+
+  .nav-item {
+    @apply relative;
+  }
+
+  .nav-link {
+    @apply flex items-center gap-2 py-2 px-4 text-moon-white no-underline font-medium transition-cosmic relative overflow-hidden uppercase tracking-wider text-sm;
+  }
+  
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 w-0 h-0.5 bg-cosmic-purple transition-cosmic -translate-x-1/2;
+  }
+
+  .nav-link:hover::after, .nav-link.active::after {
+    @apply w-full;
+  }
+
+  .nav-link.active {
+    @apply text-cosmic-purple font-semibold;
+  }
+
+  /* Responsive styles */
+  @media (max-width: 768px) {
+    .mobile-menu-button {
+      @apply flex items-center justify-center;
+    }
+
+    .nav-list {
+      @apply fixed top-[72px] left-0 right-0 flex-col items-start bg-card-bg/95 backdrop-blur-xl border-b border-cosmic-purple/30 shadow-cosmic py-4 px-5 gap-2 w-full;
+      transform: translateY(-100%);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .nav-list.mobile-open {
+      transform: translateY(0);
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .nav-item {
+      @apply w-full;
+    }
+
+    .nav-link {
+      @apply w-full border-b border-cosmic-purple/10 pb-3 mb-1 last:border-b-0;
+    }
+  }
+
+  /* Tablet styles */
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .nav-link {
+      @apply px-3 text-xs;
+    }
+  }
+  
+  /* Old Navigation (kept for compatibility) */
+  .nav {
+    @apply bg-card-bg rounded-cosmic p-5 backdrop-blur-2xl border border-cosmic-purple/20 shadow-cosmic mb-8 mt-20;
+  }
+  
+  /* Header Banner (for home page) */
+  .header-banner {
+    @apply text-center py-12 sm:py-16 md:py-20 px-4 sm:px-5 bg-glass-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/30 mb-6 sm:mb-8 relative overflow-hidden shadow-cosmic;
+  }
+  
+  .header-banner::before {
+    content: '';
+    @apply absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,transparent_70%)] animate-header-glow;
+  }
+  
+  .header-banner h1 {
+    @apply text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent mb-3 md:mb-4 relative z-10;
+    text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+  }
+  
+  .header-banner p {
+    @apply text-base sm:text-lg text-text-secondary relative z-10 px-2;
+  }
+
+  /* Loading screen */
+  .loading-screen {
+    @apply flex flex-col items-center justify-center py-16 px-10 bg-card-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/20 shadow-cosmic mb-8 text-center;
+  }
+
+  .loading-spinner {
+    @apply w-16 h-16 border-3 border-cosmic-purple/30 rounded-full border-t-cosmic-purple animate-spin mb-6;
+  }
+
+  .loading-text {
+    @apply text-lg text-text-accent mb-2 font-semibold;
+  }
+
+  .loading-subtext {
+    @apply text-sm text-text-secondary;
+  }
+
+  /* Moon phases decoration */
+  .moon-phase {
+    @apply absolute top-5 right-5 w-10 h-10 rounded-full bg-moon-gradient shadow-moon flex items-center justify-center animate-moon-glow;
+  }
+
+  .moon-phase i {
+    @apply text-bg-dark text-xl;
+  }
+
+  /* Loading overlay */
+  .loading-overlay {
+    @apply fixed inset-0 bg-bg-dark flex flex-col items-center justify-center z-50 transition-opacity duration-500;
+  }
+
+  .loading-overlay.hidden {
+    @apply opacity-0 pointer-events-none;
+  }
+
+  .loading-progress {
+    @apply w-[300px] h-1 bg-cosmic-purple/20 rounded-sm mt-5 overflow-hidden;
+  }
+
+  .loading-progress-bar {
+    @apply h-full bg-primary-gradient rounded-sm transition-[width] duration-300 ease-out;
+  }
+
+  /* Hero section */
+  .hero-section {
+    @apply text-center py-10 sm:py-12 md:py-16 px-4 sm:px-5 bg-glass-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/30 mb-6 sm:mb-8 md:mb-10 relative overflow-hidden shadow-cosmic;
+  }
+
+  .hero-section::before {
+    content: '';
+    @apply absolute -top-1/2 -left-1/2 w-[200%] h-[200%] bg-[radial-gradient(circle,rgba(139,92,246,0.1)_0%,transparent_70%)] animate-header-glow;
+  }
+
+  .hero-title {
+    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent mb-3 sm:mb-4 md:mb-5 relative z-10;
+    text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+  }
+
+  .hero-subtitle {
+    @apply text-base sm:text-lg md:text-xl text-text-secondary mb-6 sm:mb-8 relative z-10 max-w-xl mx-auto px-2;
+  }
+
+  .hero-cta {
+    @apply relative z-10;
+  }
+
+  /* CTA Button */
+  .cta-button {
+    @apply inline-flex items-center gap-2 sm:gap-3 py-3 sm:py-4 md:py-5 px-6 sm:px-8 md:px-10 bg-primary-gradient text-moon-white no-underline rounded-cosmic-sm font-bold text-base sm:text-lg uppercase tracking-wider transition-cosmic relative overflow-hidden shadow-cosmic;
+  }
+
+  .cta-button::before {
+    content: '';
+    @apply absolute top-0 -left-full w-full h-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-cosmic;
+  }
+
+  .cta-button:hover {
+    @apply -translate-y-1 shadow-glow-purple;
+  }
+
+  .cta-button:hover::before {
+    @apply left-full;
+  }
+
+  /* Features section */
+  .features-section {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8 md:mb-10;
+  }
+
+  .feature-card {
+    @apply bg-card-bg rounded-cosmic p-5 sm:p-6 md:p-8 backdrop-blur-2xl border border-cosmic-purple/20 shadow-cosmic text-center transition-cosmic relative overflow-hidden;
+  }
+
+  .feature-card::before {
+    content: '';
+    @apply absolute inset-0 bg-primary-gradient opacity-0 transition-cosmic;
+  }
+
+  .feature-card:hover {
+    @apply -translate-y-2 border-cosmic-purple shadow-glow-purple;
+  }
+
+  .feature-card:hover::before {
+    @apply opacity-10;
+  }
+
+  .feature-icon {
+    @apply text-3xl sm:text-4xl md:text-5xl text-star-gold mb-3 sm:mb-4 md:mb-5 relative z-10;
+  }
+
+  .feature-title {
+    @apply text-xl sm:text-2xl font-bold text-text-primary mb-2 sm:mb-3 md:mb-4 relative z-10;
+  }
+
+  .feature-description {
+    @apply text-sm sm:text-base text-text-secondary leading-relaxed relative z-10;
+  }
+
+  /* Image gallery */
+  .image-gallery {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-4 md:gap-5 mb-6 sm:mb-8 md:mb-10;
+  }
+
+  .gallery-item {
+    @apply aspect-[2/3] bg-surface-dark rounded-cosmic-sm border-2 border-cosmic-purple/30 overflow-hidden relative transition-cosmic;
+  }
+
+  .gallery-item:hover {
+    @apply scale-105 border-cosmic-purple shadow-glow-purple;
+  }
+
+  .gallery-item img {
+    @apply w-full h-full object-cover transition-cosmic;
+  }
+
+  .gallery-item:hover img {
+    @apply scale-110;
+  }
+
+  .gallery-placeholder {
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl sm:text-3xl md:text-4xl text-star-gold;
+    text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+  }
+
+  /* Cards page specific styles */
+  .cards-container {
+    @apply animate-fade-in;
+  }
+
+  .status-indicator {
+    @apply flex items-center gap-2 p-4 rounded-cosmic-sm mb-6 text-sm font-medium;
+  }
+
+  .status-indicator.success {
+    @apply bg-green-500/10 text-green-400 border border-green-500/20;
+  }
+
+  .status-indicator.error {
+    @apply bg-red-500/10 text-red-400 border border-red-500/20;
+  }
+
+  .status-indicator.loading {
+    @apply bg-cosmic-purple/10 text-cosmic-purple border border-cosmic-purple/20;
+  }
+
+  .section-title {
+    @apply text-2xl sm:text-2xl md:text-3xl font-bold text-center mb-3 sm:mb-4 bg-gradient-to-r from-moon-white to-cosmic-purple bg-clip-text text-transparent;
+  }
+
+  /* Card Shuffling and Drawing Section */
+  .card-shuffling-section {
+    @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 backdrop-blur-xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8;
+  }
+
+  .deck-container {
+    @apply flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8;
+  }
+
+  .tarot-deck {
+    @apply relative w-48 h-72 cursor-pointer transition-cosmic hover:scale-105;
+  }
+
+  .deck-cards {
+    @apply relative w-full h-full;
+  }
+
+  .deck-card {
+    @apply absolute inset-0 w-full h-full bg-gradient-to-br from-surface-dark to-bg-dark border-2 border-cosmic-purple/30 rounded-cosmic-sm shadow-cosmic transition-cosmic overflow-hidden;
+  }
+  
+  .deck-card.main-card {
+    @apply border-3 border-cosmic-purple/70 bg-gradient-to-br from-surface-light to-surface-dark;
+    box-shadow: 0 0 15px rgba(147, 51, 234, 0.5), inset 0 0 20px rgba(147, 51, 234, 0.3);
+  }
+  
+  .deck-card.fan-card {
+    @apply bg-gradient-to-br from-surface-dark to-bg-dark border-cosmic-purple/20;
+    box-shadow: 0 0 10px rgba(147, 51, 234, 0.3);
+    transition: transform 0.3s ease-out;
+  }
+  
+  .tarot-deck:hover .fan-card:nth-child(2) {
+    transform: rotate(-25deg) translate(-15px, -5px) !important;
+  }
+  
+  .tarot-deck:hover .fan-card:nth-child(3) {
+    transform: rotate(-12deg) translate(-8px, -2px) !important;
+  }
+  
+  .tarot-deck:hover .fan-card:nth-child(4) {
+    transform: rotate(12deg) translate(8px, -2px) !important;
+  }
+  
+  .tarot-deck:hover .fan-card:nth-child(5) {
+    transform: rotate(25deg) translate(15px, -5px) !important;
+  }
+  
+  .deck-card-image {
+    @apply relative w-full h-full;
+  }
+  
+  .deck-card-img {
+    @apply object-cover brightness-110;
+    filter: contrast(1.1);
+  }
+  
+  .card-shine {
+    @apply absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent pointer-events-none;
+  }
+
+  .deck-glow {
+    @apply absolute inset-0 bg-cosmic-purple/20 rounded-cosmic-sm opacity-0 transition-cosmic;
+  }
+  
+  .tarot-deck:hover .deck-glow {
+    @apply opacity-100;
+    box-shadow: 0 0 30px rgba(147, 51, 234, 0.6), 0 0 60px rgba(147, 51, 234, 0.3);
+  }
+  
+  .tarot-deck:hover .main-card {
+    box-shadow: 0 0 25px rgba(147, 51, 234, 0.7), inset 0 0 30px rgba(147, 51, 234, 0.4);
+  }
+
+  .tarot-deck.shuffling {
+    animation: shuffle 1s ease-in-out infinite;
+  }
+  
+  .tarot-deck.shuffling .fan-card:nth-child(2) {
+    animation: fanLeft 1.2s ease-in-out infinite;
+  }
+  
+  .tarot-deck.shuffling .fan-card:nth-child(3) {
+    animation: fanLeft 1.2s ease-in-out infinite 0.1s;
+  }
+  
+  .tarot-deck.shuffling .fan-card:nth-child(4) {
+    animation: fanRight 1.2s ease-in-out infinite 0.1s;
+  }
+  
+  .tarot-deck.shuffling .fan-card:nth-child(5) {
+    animation: fanRight 1.2s ease-in-out infinite;
+  }
+
+  @keyframes shuffle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg) translateY(-5px); }
+    75% { transform: rotate(5deg) translateY(-5px); }
+  }
+  
+  @keyframes fanLeft {
+    0% {
+      transform: rotate(-20deg) translate(-10px, -5px);
+    }
+    50% {
+      transform: rotate(-35deg) translate(-20px, -8px);
+    }
+    100% {
+      transform: rotate(-20deg) translate(-10px, -5px);
+    }
+  }
+  
+  @keyframes fanRight {
+    0% {
+      transform: rotate(20deg) translate(10px, -5px);
+    }
+    50% {
+      transform: rotate(35deg) translate(20px, -8px);
+    }
+    100% {
+      transform: rotate(20deg) translate(10px, -5px);
+    }
+  }
+
+  .deck-info {
+    @apply text-center md:text-left;
+  }
+
+  .deck-info h3 {
+    @apply text-2xl font-bold mb-2 text-cosmic-purple;
+  }
+
+  .shuffle-status {
+    @apply flex items-center gap-2 mt-3 text-text-secondary;
+  }
+
+  .shuffle-controls {
+    @apply flex flex-wrap justify-center gap-3 sm:gap-4 mb-6 sm:mb-8;
+  }
+
+  .shuffle-btn, .draw-btn {
+    @apply flex items-center gap-2 py-3 sm:py-4 px-5 sm:px-6 md:px-8 rounded-cosmic-sm font-bold text-base sm:text-lg transition-cosmic relative overflow-hidden;
+  }
+
+  .shuffle-btn {
+    @apply bg-gradient-to-r from-cosmic-purple to-mystic-blue text-moon-white shadow-cosmic;
+  }
+
+  .draw-btn {
+    @apply bg-gradient-to-r from-star-gold to-amber-500 text-bg-dark;
+  }
+
+  .shuffle-btn:hover, .draw-btn:hover {
+    @apply -translate-y-1 shadow-glow-purple;
+  }
+
+  .shuffle-animation {
+    @apply absolute inset-0 bg-white/10 opacity-0;
+  }
+
+  .shuffle-btn.animating .shuffle-animation {
+    animation: pulse 1s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 0.3; }
+  }
+
+  /* Drawn Cards Area */
+  .drawn-cards-area {
+    @apply max-h-0 overflow-hidden transition-all duration-500 ease-out opacity-0;
+  }
+
+  .drawn-cards-area.show {
+    @apply max-h-[600px] opacity-100 mt-6 sm:mt-8;
+  }
+
+  .draw-message {
+    @apply text-center text-base sm:text-lg text-text-accent mb-4 sm:mb-6 font-medium;
+  }
+
+  .drawn-cards-container {
+    @apply flex flex-wrap justify-center gap-4 sm:gap-6;
+  }
+
+  .drawn-card {
+    @apply w-[150px] sm:w-[180px] md:w-[200px] bg-surface-dark rounded-cosmic-sm border-2 border-cosmic-purple/50 overflow-hidden shadow-glow-purple transition-cosmic animate-fade-in;
+  }
+
+  .drawn-card-image {
+    @apply aspect-[2/3] relative overflow-hidden;
+  }
+
+  .drawn-card-image img {
+    @apply w-full h-full object-cover transition-cosmic;
+  }
+
+  .drawn-card-placeholder {
+    @apply absolute inset-0 flex items-center justify-center text-4xl text-star-gold bg-surface-dark;
+  }
+
+  .drawn-card-content {
+    @apply p-4 text-center;
+  }
+
+  .drawn-card-title {
+    @apply text-lg font-bold text-cosmic-purple mb-1;
+  }
+
+  .drawn-card-category {
+    @apply text-sm text-text-secondary;
+  }
+
+  /* Selection Summary */
+  .selection-summary {
+    @apply bg-surface-dark rounded-cosmic p-4 sm:p-6 border border-cosmic-purple/20 mb-6 sm:mb-8 max-h-0 overflow-hidden transition-all duration-500 ease-out opacity-0;
+  }
+
+  .selection-summary.show {
+    @apply max-h-[300px] opacity-100;
+  }
+
+  .selection-summary h3 {
+    @apply flex items-center gap-2 text-lg sm:text-xl font-bold text-cosmic-purple mb-3 sm:mb-4;
+  }
+
+  .selected-cards-list {
+    @apply flex flex-wrap gap-2 sm:gap-3;
+  }
+
+  .selected-card-item {
+    @apply flex items-center gap-2 bg-surface-light rounded-cosmic-sm py-1 sm:py-2 px-3 sm:px-4 text-xs sm:text-sm;
+  }
+
+  .selected-card-item .remove-card {
+    @apply text-text-secondary hover:text-red-400 cursor-pointer transition-colors;
+  }
+
+  /* Filter Controls */
+  .filter-controls {
+    @apply flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 mb-6 sm:mb-8;
+  }
+
+  .filter-group {
+    @apply flex items-center gap-1 sm:gap-2;
+  }
+
+  .filter-group label {
+    @apply text-text-secondary text-sm sm:text-base;
+  }
+
+  .filter-group select, .filter-group input {
+    @apply bg-surface-dark border border-cosmic-purple/20 rounded-cosmic-sm py-1 sm:py-2 px-2 sm:px-4 text-sm text-text-primary focus:outline-none focus:border-cosmic-purple focus:ring-1 focus:ring-cosmic-purple transition-cosmic;
+  }
+
+  /* Controls */
+  .controls {
+    @apply flex flex-wrap justify-center gap-3 sm:gap-4 mb-6 sm:mb-8;
+  }
+
+  .controls button {
+    @apply flex items-center gap-1 sm:gap-2 py-2 sm:py-3 px-4 sm:px-6 rounded-cosmic-sm font-medium text-sm sm:text-base transition-cosmic;
+  }
+
+  .controls button:hover {
+    @apply -translate-y-0.5 shadow-glow-purple;
+  }
+
+  .controls button:first-child {
+    @apply bg-gradient-to-r from-cosmic-purple to-mystic-blue text-moon-white;
+  }
+
+  .controls button.btn-secondary {
+    @apply bg-surface-light text-text-primary border border-cosmic-purple/20;
+  }
+
+  /* Card Grid */
+  .card-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6;
+  }
+
+  .tarot-card {
+    @apply bg-surface-dark rounded-cosmic-sm border-2 border-cosmic-purple/20 overflow-hidden transition-cosmic cursor-pointer;
+  }
+
+  .tarot-card:hover {
+    @apply -translate-y-2 border-cosmic-purple/50 shadow-glow-purple;
+  }
+
+  .tarot-card.selected {
+    @apply border-star-gold;
+    box-shadow: 0 0 20px rgba(251, 191, 36, 0.5);
+  }
+
+  .card-image {
+    @apply aspect-[2/3] relative overflow-hidden;
+  }
+
+  .card-image img {
+    @apply w-full h-full object-cover transition-cosmic;
+  }
+
+  .tarot-card:hover .card-image img {
+    @apply scale-110;
+  }
+
+  .card-placeholder {
+    @apply absolute inset-0 flex items-center justify-center text-4xl text-star-gold bg-surface-dark;
+  }
+
+  .card-content {
+    @apply p-3 sm:p-4;
+  }
+
+  .card-title {
+    @apply text-base sm:text-lg font-bold text-cosmic-purple mb-1;
+  }
+
+  .card-category {
+    @apply text-xs sm:text-sm text-text-secondary mb-1 sm:mb-2;
+  }
+
+  .card-short-meaning {
+    @apply text-xs sm:text-sm text-text-accent italic;
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header h1 {
+    @apply text-4xl;
+  }
+
+  .header p {
+    @apply text-base;
+  }
+
+  .nav-list {
+    @apply flex-col items-center;
+  }
+
+  .nav-link {
+    @apply w-full justify-center max-w-[300px];
+  }
+
+  .moon-phase {
+    @apply w-8 h-8 top-4 right-4;
+  }
+
+  .moon-phase i {
+    @apply text-base;
+  }
+
+  .hero-title {
+    @apply text-4xl;
+  }
+
+  .hero-subtitle {
+    @apply text-base;
+  }
+
+  .cta-button {
+    @apply py-4 px-8 text-base;
+  }
+
+  .features-section {
+    @apply grid-cols-1 gap-5;
+  }
+
+  .feature-card {
+    @apply p-5;
+  }
+
+  .image-gallery {
+    @apply grid-cols-2 gap-4;
+  }
+}

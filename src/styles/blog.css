@@ -1,0 +1,261 @@
+/* Blog Styles */
+
+/* Blog Header */
+.blog-header {
+  @apply text-center py-8 sm:py-10 px-4 sm:px-5 bg-glass-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/30 mb-6 sm:mb-8 relative overflow-hidden shadow-cosmic mt-20;
+}
+
+.blog-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent mb-3 sm:mb-4 relative z-10;
+  text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+}
+
+.blog-subtitle {
+  @apply text-base sm:text-lg text-text-secondary relative z-10;
+}
+
+/* Blog Filters */
+.blog-filters {
+  @apply mb-6 sm:mb-8;
+}
+
+.filter-container {
+  @apply flex flex-col md:flex-row justify-between items-center gap-3 sm:gap-4 bg-card-bg rounded-cosmic p-4 sm:p-5 backdrop-blur-xl border border-cosmic-purple/20 shadow-cosmic;
+}
+
+.category-filter {
+  @apply flex items-center gap-2;
+}
+
+.filter-icon {
+  @apply text-cosmic-purple;
+}
+
+.category-select {
+  @apply bg-surface-dark border border-cosmic-purple/20 rounded-cosmic-sm py-1.5 sm:py-2 px-3 sm:px-4 text-sm sm:text-base text-text-primary focus:outline-none focus:border-cosmic-purple focus:ring-1 focus:ring-cosmic-purple transition-cosmic;
+}
+
+.search-form {
+  @apply w-full md:w-auto;
+}
+
+.search-input-container {
+  @apply relative;
+}
+
+.search-input {
+  @apply w-full md:w-64 bg-surface-dark border border-cosmic-purple/20 rounded-cosmic-sm py-1.5 sm:py-2 pl-3 sm:pl-4 pr-8 sm:pr-10 text-sm sm:text-base text-text-primary focus:outline-none focus:border-cosmic-purple focus:ring-1 focus:ring-cosmic-purple transition-cosmic;
+}
+
+.search-button {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 text-cosmic-purple hover:text-mystic-blue transition-cosmic;
+}
+
+/* Blog Posts Grid */
+.posts-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8;
+}
+
+.blog-post-card {
+  @apply bg-card-bg rounded-cosmic border border-cosmic-purple/20 overflow-hidden shadow-cosmic transition-cosmic hover:-translate-y-2 hover:shadow-glow-purple;
+}
+
+.post-image {
+  @apply relative h-40 sm:h-44 md:h-48 overflow-hidden;
+}
+
+.post-image img {
+  @apply transition-transform duration-500;
+}
+
+.blog-post-card:hover .post-image img {
+  @apply scale-110;
+}
+
+.image-placeholder {
+  @apply w-full h-full bg-gradient-to-br from-cosmic-purple/30 to-mystic-blue/30 flex items-center justify-center text-cosmic-purple text-lg sm:text-xl font-bold;
+}
+
+.post-category {
+  @apply absolute top-3 sm:top-4 left-3 sm:left-4 bg-cosmic-purple/80 text-moon-white text-xs py-1 px-2 sm:px-3 rounded-full backdrop-blur-sm;
+}
+
+.post-title {
+  @apply text-lg sm:text-xl font-bold text-text-primary px-4 sm:px-6 pt-4 sm:pt-6 pb-2 hover:text-cosmic-purple transition-cosmic;
+}
+
+.post-meta {
+  @apply flex flex-wrap gap-2 sm:gap-4 px-4 sm:px-6 text-xs sm:text-sm text-text-secondary;
+}
+
+.meta-item {
+  @apply flex items-center gap-1;
+}
+
+.meta-icon {
+  @apply text-cosmic-purple;
+}
+
+.post-author {
+  @apply flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 border-b border-cosmic-purple/10;
+}
+
+.author-avatar {
+  @apply w-6 h-6 sm:w-8 sm:h-8 rounded-full overflow-hidden bg-cosmic-purple/20 flex items-center justify-center text-cosmic-purple font-bold;
+}
+
+.author-name {
+  @apply text-xs sm:text-sm text-text-primary;
+}
+
+.post-excerpt {
+  @apply px-4 sm:px-6 py-3 sm:py-4 text-xs sm:text-sm text-text-secondary line-clamp-3;
+}
+
+.post-tags {
+  @apply flex flex-wrap gap-1 sm:gap-2 px-4 sm:px-6 py-2 sm:py-3;
+}
+
+.post-tag {
+  @apply flex items-center gap-1 text-xs text-text-secondary bg-surface-dark rounded-full py-0.5 sm:py-1 px-2 sm:px-3 hover:bg-cosmic-purple/10 transition-cosmic;
+}
+
+.tag-icon {
+  @apply text-cosmic-purple text-xs;
+}
+
+.read-more {
+  @apply block text-center py-2 sm:py-3 bg-surface-dark text-cosmic-purple hover:bg-cosmic-purple/10 transition-cosmic font-medium text-sm sm:text-base;
+}
+
+/* Blog Pagination */
+.blog-pagination {
+  @apply flex justify-between items-center mt-8 sm:mt-10 md:mt-12 bg-card-bg rounded-cosmic p-3 sm:p-4 border border-cosmic-purple/20;
+}
+
+.pagination-button {
+  @apply flex items-center gap-1 sm:gap-2 py-1.5 sm:py-2 px-3 sm:px-4 bg-surface-dark text-text-primary text-xs sm:text-sm rounded-cosmic-sm hover:bg-cosmic-purple/10 transition-cosmic;
+}
+
+.pagination-button.disabled {
+  @apply opacity-50 cursor-not-allowed hover:bg-surface-dark;
+}
+
+.pagination-info {
+  @apply text-text-secondary text-xs sm:text-sm;
+}
+
+/* No Posts */
+.no-posts {
+  @apply text-center py-10 sm:py-12 md:py-16 bg-card-bg rounded-cosmic border border-cosmic-purple/20;
+}
+
+/* Loading & Error */
+.loading-container, .error-container {
+  @apply flex flex-col items-center justify-center py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-10 bg-card-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8 text-center mt-20;
+}
+
+/* Blog Post Page */
+.blog-post-page {
+  @apply mt-20;
+}
+
+.back-link {
+  @apply mb-4 sm:mb-6;
+}
+
+.back-to-blog {
+  @apply inline-flex items-center text-cosmic-purple hover:text-mystic-blue transition-cosmic text-sm sm:text-base;
+}
+
+.post-header {
+  @apply text-center mb-6 sm:mb-8;
+}
+
+.post-header .post-category {
+  @apply static inline-block mx-auto mb-3 sm:mb-4;
+}
+
+.post-header .post-title {
+  @apply text-2xl sm:text-3xl md:text-4xl px-0 pt-0 pb-3 sm:pb-4;
+}
+
+.post-header .post-meta {
+  @apply justify-center px-0;
+}
+
+.post-header .post-author {
+  @apply justify-center px-0 py-3 sm:py-4 border-b-0;
+}
+
+.post-header .author-avatar {
+  @apply w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12;
+}
+
+.post-header .author-name {
+  @apply text-sm sm:text-base;
+}
+
+.post-featured-image {
+  @apply mb-6 sm:mb-8 rounded-cosmic-sm overflow-hidden;
+}
+
+.post-content {
+  @apply prose prose-sm sm:prose-base md:prose-lg prose-invert max-w-none bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic;
+}
+
+.content-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-3 sm:mb-4 mt-6 sm:mt-8 first:mt-0;
+}
+
+.content-subheading {
+  @apply text-lg sm:text-xl font-bold text-text-primary mb-2 sm:mb-3 mt-4 sm:mt-6;
+}
+
+.content-paragraph {
+  @apply mb-3 sm:mb-4 text-text-secondary leading-relaxed text-sm sm:text-base;
+}
+
+.content-list {
+  @apply mb-3 sm:mb-4 pl-4 sm:pl-6 text-text-secondary text-sm sm:text-base;
+}
+
+.content-list.numbered {
+  @apply list-decimal;
+}
+
+.content-list:not(.numbered) {
+  @apply list-disc;
+}
+
+.content-list li {
+  @apply mb-1 sm:mb-2;
+}
+
+.post-tags-container {
+  @apply flex flex-wrap items-center gap-2 mt-6 sm:mt-8 bg-card-bg rounded-cosmic p-3 sm:p-4 border border-cosmic-purple/20;
+}
+
+.tags-heading {
+  @apply text-text-primary font-bold text-sm sm:text-base;
+}
+
+.post-tags-container .post-tags {
+  @apply p-0;
+}
+
+.post-tags-container .post-tag {
+  @apply py-1 sm:py-1.5 px-3 sm:px-4;
+}
+
+.related-posts {
+  @apply mt-8 sm:mt-10 md:mt-12;
+}
+
+.related-heading {
+  @apply text-xl sm:text-2xl font-bold text-text-primary mb-4 sm:mb-6;
+}
+
+.related-posts-placeholder {
+  @apply text-center py-8 sm:py-10 md:py-12 bg-card-bg rounded-cosmic border border-cosmic-purple/20;
+}

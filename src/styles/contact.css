@@ -1,0 +1,256 @@
+/* Contact Page Styles */
+
+/* Contact Header */
+.contact-header {
+  @apply text-center py-8 sm:py-10 px-4 sm:px-5 bg-glass-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/30 mb-6 sm:mb-8 relative overflow-hidden shadow-cosmic mt-20;
+}
+
+.contact-title {
+  @apply text-2xl sm:text-3xl md:text-4xl font-bold bg-gradient-to-r from-moon-white via-cosmic-purple to-mystic-blue bg-clip-text text-transparent mb-3 sm:mb-4 relative z-10;
+  text-shadow: 0 0 30px rgba(248, 250, 252, 0.3);
+}
+
+.contact-subtitle {
+  @apply text-base sm:text-lg text-text-secondary relative z-10;
+}
+
+/* Contact Content */
+.contact-content {
+  @apply mb-8 sm:mb-10 md:mb-12;
+}
+
+.contact-container {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8;
+}
+
+/* Contact Info */
+.contact-info {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic;
+}
+
+.info-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.info-item {
+  @apply flex items-start gap-3 sm:gap-4 mb-4 sm:mb-6;
+}
+
+.info-icon {
+  @apply w-8 h-8 sm:w-10 sm:h-10 bg-cosmic-purple/10 rounded-full flex items-center justify-center text-cosmic-purple;
+}
+
+.info-text h3 {
+  @apply text-base sm:text-lg font-bold text-text-primary mb-0.5 sm:mb-1;
+}
+
+.info-text p {
+  @apply text-sm sm:text-base text-text-secondary;
+}
+
+.info-text a {
+  @apply text-sm sm:text-base text-text-secondary hover:text-cosmic-purple transition-cosmic;
+}
+
+/* Social Media */
+.social-media {
+  @apply mt-6 sm:mt-8;
+}
+
+.social-media h3 {
+  @apply text-base sm:text-lg font-bold text-text-primary mb-3 sm:mb-4;
+}
+
+.social-links {
+  @apply flex gap-3 sm:gap-4;
+}
+
+.social-link {
+  @apply w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center transition-cosmic;
+}
+
+.social-link.facebook {
+  @apply bg-[#3b5998]/10 text-[#3b5998] hover:bg-[#3b5998] hover:text-white;
+}
+
+.social-link.instagram {
+  @apply bg-[#e1306c]/10 text-[#e1306c] hover:bg-[#e1306c] hover:text-white;
+}
+
+.social-link.youtube {
+  @apply bg-[#ff0000]/10 text-[#ff0000] hover:bg-[#ff0000] hover:text-white;
+}
+
+/* Contact Form */
+.contact-form-container {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic;
+}
+
+.form-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.contact-form {
+  @apply space-y-4 sm:space-y-6;
+}
+
+.form-row {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6;
+}
+
+.form-group {
+  @apply space-y-1 sm:space-y-2;
+}
+
+.form-group label {
+  @apply block text-text-primary text-sm sm:text-base;
+}
+
+.required {
+  @apply text-red-500;
+}
+
+.form-group input, .form-group textarea {
+  @apply w-full bg-surface-dark border border-cosmic-purple/20 rounded-cosmic-sm py-1.5 sm:py-2 px-3 sm:px-4 text-sm sm:text-base text-text-primary focus:outline-none focus:border-cosmic-purple focus:ring-1 focus:ring-cosmic-purple transition-cosmic;
+}
+
+.submit-btn {
+  @apply w-full flex items-center justify-center gap-2 py-2 sm:py-3 px-4 sm:px-6 bg-primary-gradient text-moon-white rounded-cosmic-sm text-sm sm:text-base font-semibold transition-cosmic relative overflow-hidden shadow-cosmic;
+}
+
+.submit-btn:hover {
+  @apply shadow-glow-purple;
+}
+
+.submit-btn:disabled {
+  @apply opacity-70 cursor-not-allowed;
+}
+
+/* Form Success/Error */
+.form-success {
+  @apply text-center py-6 sm:py-8;
+}
+
+.success-icon {
+  @apply text-2xl sm:text-3xl text-green-500 mb-3 sm:mb-4;
+}
+
+.form-success h3 {
+  @apply text-lg sm:text-xl font-bold text-text-primary mb-1 sm:mb-2;
+}
+
+.form-success p {
+  @apply text-sm sm:text-base text-text-secondary mb-4 sm:mb-6;
+}
+
+.new-message-btn {
+  @apply py-1.5 sm:py-2 px-4 sm:px-6 bg-cosmic-purple/10 text-cosmic-purple text-sm sm:text-base rounded-cosmic-sm hover:bg-cosmic-purple/20 transition-cosmic;
+}
+
+.form-error {
+  @apply bg-red-500/10 border border-red-500/20 rounded-cosmic-sm p-3 sm:p-4 flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6;
+}
+
+.error-icon {
+  @apply text-red-500;
+}
+
+.form-error p {
+  @apply text-red-500 text-xs sm:text-sm;
+}
+
+/* Team Section */
+.contact-team {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic mb-8 sm:mb-10 md:mb-12;
+}
+
+.team-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.team-grid {
+  @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8;
+}
+
+.team-card {
+  @apply bg-surface-dark rounded-cosmic-sm p-4 sm:p-6 text-center transition-cosmic hover:-translate-y-1 hover:shadow-glow-purple;
+}
+
+.team-avatar {
+  @apply mb-3 sm:mb-4;
+}
+
+.team-avatar img {
+  @apply mx-auto;
+}
+
+.avatar-placeholder {
+  @apply w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 mx-auto rounded-full bg-cosmic-purple/20 flex items-center justify-center text-xl sm:text-2xl font-bold text-cosmic-purple;
+}
+
+.team-name {
+  @apply text-base sm:text-lg font-bold text-text-primary mb-0.5 sm:mb-1;
+}
+
+.team-position {
+  @apply text-xs sm:text-sm text-cosmic-purple mb-3 sm:mb-4;
+}
+
+.team-contact {
+  @apply space-y-1 sm:space-y-2;
+}
+
+.team-email, .team-phone {
+  @apply flex items-center justify-center gap-1 sm:gap-2 text-xs sm:text-sm text-text-secondary hover:text-cosmic-purple transition-cosmic;
+}
+
+/* FAQ Section */
+.contact-faq {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic mb-8 sm:mb-10 md:mb-12;
+}
+
+.faq-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.faq-list {
+  @apply space-y-3 sm:space-y-4;
+}
+
+.faq-item {
+  @apply bg-surface-dark rounded-cosmic-sm p-4 sm:p-6 border border-cosmic-purple/10;
+}
+
+.faq-question {
+  @apply text-base sm:text-lg font-bold text-text-primary mb-1 sm:mb-2;
+}
+
+.faq-answer {
+  @apply text-sm sm:text-base text-text-secondary;
+}
+
+/* Map Section */
+.contact-map {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 border border-cosmic-purple/20 shadow-cosmic;
+}
+
+.map-heading {
+  @apply text-xl sm:text-2xl font-bold text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.map-container {
+  @apply h-60 sm:h-72 md:h-80 bg-surface-dark rounded-cosmic-sm border border-cosmic-purple/10 overflow-hidden;
+}
+
+.map-placeholder {
+  @apply w-full h-full flex flex-col items-center justify-center text-sm sm:text-base text-text-secondary;
+}
+
+.map-coords {
+  @apply text-xs sm:text-sm mt-1 sm:mt-2 text-cosmic-purple;
+}
+
+/* Loading & Error */
+.loading-container, .error-container {
+  @apply flex flex-col items-center justify-center py-10 sm:py-12 md:py-16 px-4 sm:px-6 md:px-10 bg-card-bg rounded-cosmic backdrop-blur-2xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8 text-center mt-20;
+}

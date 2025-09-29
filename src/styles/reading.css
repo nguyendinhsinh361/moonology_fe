@@ -1,0 +1,320 @@
+/* Reading page specific styles */
+.reading-container {
+  @apply animate-fade-in;
+}
+
+.subsection-title {
+  @apply text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-cosmic-purple flex items-center gap-2;
+}
+
+/* Selected Cards */
+.selected-cards-section {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 backdrop-blur-xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8;
+}
+
+.selected-cards-display {
+  @apply flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6;
+}
+
+.selected-card {
+  @apply flex flex-col items-center;
+}
+
+.selected-card-image {
+  @apply w-[120px] sm:w-[140px] md:w-[150px] h-[180px] sm:h-[210px] md:h-[225px] bg-surface-dark rounded-cosmic-sm border-2 border-cosmic-purple/50 overflow-hidden shadow-glow-purple transition-cosmic relative;
+}
+
+.selected-card-image img {
+  @apply w-full h-full object-cover transition-cosmic;
+}
+
+.selected-card-placeholder {
+  @apply absolute inset-0 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl text-star-gold bg-surface-dark;
+}
+
+.selected-card-name {
+  @apply mt-2 sm:mt-3 font-bold text-cosmic-purple text-sm sm:text-base;
+}
+
+.selected-card-position {
+  @apply text-xs sm:text-sm text-text-secondary;
+}
+
+/* Reading Interpretation */
+.reading-interpretation {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 backdrop-blur-xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8;
+}
+
+.interpretation-content {
+  @apply text-text-primary text-sm sm:text-base;
+}
+
+.interpretation-content h3 {
+  @apply text-lg sm:text-xl font-bold text-cosmic-purple mb-3 sm:mb-4 flex items-center gap-2;
+}
+
+.interpretation-content h4 {
+  @apply text-base sm:text-lg font-bold text-text-accent mb-2 sm:mb-3;
+}
+
+.interpretation-content p {
+  @apply mb-3 sm:mb-4;
+}
+
+.interpretation-content ul {
+  @apply mb-4 sm:mb-6 pl-4 sm:pl-6;
+}
+
+.interpretation-content li {
+  @apply mb-1 sm:mb-2 relative pl-4 sm:pl-5;
+}
+
+.interpretation-content li::before {
+  content: '•';
+  @apply absolute left-0 text-cosmic-purple;
+}
+
+.interpretation-content li.important {
+  @apply bg-amber-500/10 p-2 rounded-cosmic-sm border-l-4 border-amber-500;
+}
+
+.interpretation-content li.warning {
+  @apply bg-red-500/10 p-2 rounded-cosmic-sm border-l-4 border-red-500;
+}
+
+.interpretation-content li.success {
+  @apply bg-green-500/10 p-2 rounded-cosmic-sm border-l-4 border-green-500;
+}
+
+.interpretation-content li.love {
+  @apply text-pink-400;
+}
+
+.interpretation-content li.career {
+  @apply text-blue-400;
+}
+
+.interpretation-content li.money {
+  @apply text-green-400;
+}
+
+.interpretation-content li.health {
+  @apply text-red-400;
+}
+
+.interpretation-content li.family {
+  @apply text-purple-400;
+}
+
+.interpretation-content li.travel {
+  @apply text-cyan-400;
+}
+
+.interpretation-content .highlight {
+  @apply text-cosmic-purple font-medium;
+}
+
+.interpretation-content blockquote {
+  @apply italic border-l-4 border-cosmic-purple/50 pl-4 py-1 my-4 text-text-secondary;
+}
+
+.interpretation-content .section-number {
+  @apply text-star-gold mr-2;
+}
+
+.interpretation-content .section-icon {
+  @apply mr-2;
+}
+
+.interpretation-content .subsection-number {
+  @apply text-cosmic-purple mr-2;
+}
+
+/* Loading state for interpretation */
+.interpretation-loading {
+  @apply flex flex-col items-center justify-center py-8 sm:py-12 text-center;
+}
+
+.loading-spinner {
+  @apply text-3xl sm:text-4xl md:text-5xl text-cosmic-purple mb-4 sm:mb-6;
+}
+
+.interpretation-loading p {
+  @apply text-text-primary text-base sm:text-lg font-medium mb-2;
+}
+
+.interpretation-loading .loading-subtext {
+  @apply text-text-secondary text-sm sm:text-base;
+}
+
+/* Chat Section */
+.chat-section {
+  @apply bg-card-bg rounded-cosmic p-4 sm:p-6 md:p-8 backdrop-blur-xl border border-cosmic-purple/20 shadow-cosmic mb-6 sm:mb-8;
+}
+
+.chat-messages {
+  @apply mb-4 sm:mb-6 max-h-[300px] sm:max-h-[400px] md:max-h-[500px] overflow-y-auto p-3 sm:p-4 bg-surface-dark rounded-cosmic-sm;
+}
+
+.chat-empty-state {
+  @apply flex flex-col items-center justify-center py-6 sm:py-10 text-text-secondary;
+}
+
+.chat-empty-icon {
+  @apply text-2xl sm:text-3xl md:text-4xl text-cosmic-purple mb-3 sm:mb-4;
+}
+
+.chat-message {
+  @apply mb-3 sm:mb-4 last:mb-0 max-w-[85%] sm:max-w-[80%];
+}
+
+.user-message {
+  @apply ml-auto;
+}
+
+.ai-message {
+  @apply mr-auto;
+}
+
+.message-content {
+  @apply p-3 sm:p-4 rounded-cosmic-sm text-sm sm:text-base;
+}
+
+.user-message .message-content {
+  @apply bg-cosmic-purple/30 text-text-primary;
+}
+
+.ai-message .message-content {
+  @apply bg-surface-light text-text-primary;
+}
+
+.message-content.loading {
+  @apply flex items-center gap-2 text-text-secondary;
+}
+
+.chat-input-container {
+  @apply flex gap-2;
+}
+
+.chat-input {
+  @apply flex-1 bg-surface-dark border border-cosmic-purple/20 rounded-cosmic-sm py-2 sm:py-3 px-3 sm:px-4 text-sm sm:text-base text-text-primary focus:outline-none focus:border-cosmic-purple focus:ring-1 focus:ring-cosmic-purple transition-cosmic;
+}
+
+.chat-send-btn {
+  @apply bg-primary-gradient text-moon-white py-2 sm:py-3 px-4 sm:px-6 text-sm sm:text-base rounded-cosmic-sm transition-cosmic hover:-translate-y-1 hover:shadow-glow-purple disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.chat-suggestions {
+  @apply mt-4 sm:mt-6;
+}
+
+.suggestions-header {
+  @apply flex items-center gap-2 mb-4 sm:mb-6;
+}
+
+.suggestions-icon {
+  @apply text-cosmic-purple text-lg sm:text-xl;
+}
+
+.suggestions-title {
+  @apply text-base sm:text-lg font-bold text-cosmic-purple;
+}
+
+.suggestions-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.suggestion-card {
+  @apply bg-gradient-to-br from-surface-light to-surface-dark border border-cosmic-purple/30 rounded-cosmic p-4 sm:p-6 cursor-pointer transition-all duration-300 hover:border-cosmic-purple/60 hover:shadow-glow-purple hover:-translate-y-1 hover:scale-105;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-card-header {
+  @apply flex items-center justify-between mb-3 sm:mb-4;
+}
+
+.suggestion-card-icon {
+  @apply text-cosmic-purple text-lg sm:text-xl group-hover:text-star-gold transition-colors;
+}
+
+.suggestion-card-number {
+  @apply bg-cosmic-purple/20 text-cosmic-purple text-xs sm:text-sm font-bold px-2 py-1 rounded-full;
+}
+
+.suggestion-card-content {
+  @apply text-text-primary text-sm sm:text-base leading-relaxed mb-3 sm:mb-4;
+  flex: 1;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.suggestion-card-footer {
+  @apply flex justify-end;
+}
+
+.suggestion-card-arrow {
+  @apply text-cosmic-purple/60 text-sm group-hover:text-cosmic-purple group-hover:translate-x-1 transition-all;
+}
+
+/* Start Reading Button Section */
+.start-reading-section {
+  @apply flex justify-center mt-8 sm:mt-10;
+}
+
+.start-reading-btn {
+  @apply relative bg-gradient-to-r from-cosmic-purple via-mystic-blue to-cosmic-purple text-moon-white py-4 sm:py-5 px-8 sm:px-12 rounded-cosmic font-bold text-lg sm:text-xl transition-all duration-300 hover:scale-105 hover:shadow-glow-purple active:scale-95 overflow-hidden border-2 border-cosmic-purple/50;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(99, 102, 241, 0.2);
+}
+
+.start-reading-btn:hover {
+  background-position: 100% 100%;
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.5), 0 0 70px rgba(99, 102, 241, 0.3);
+}
+
+.start-reading-btn-icon {
+  @apply mr-2 sm:mr-3 text-star-gold text-lg sm:text-xl;
+}
+
+.start-reading-btn-glow {
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full transition-transform duration-700;
+}
+
+.start-reading-btn:hover .start-reading-btn-glow {
+  @apply translate-x-full;
+}
+
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Reading Actions */
+.reading-actions {
+  @apply flex flex-wrap justify-center gap-3 sm:gap-4;
+}
+
+.action-btn {
+  @apply flex items-center gap-1 sm:gap-2 py-2 sm:py-3 px-4 sm:px-6 rounded-cosmic-sm font-medium text-sm sm:text-base transition-cosmic;
+}
+
+.action-btn:not(.secondary) {
+  @apply bg-gradient-to-r from-cosmic-purple to-mystic-blue text-moon-white;
+}
+
+.action-btn.secondary {
+  @apply bg-surface-light text-text-primary border border-cosmic-purple/20;
+}
+
+.action-btn:hover {
+  @apply -translate-y-1 shadow-glow-purple;
+}
