@@ -44,6 +44,12 @@ export default function CardsPage() {
   const [userThoughts, setUserThoughts] = useState('');
   const [showThoughtsInput, setShowThoughtsInput] = useState(false);
 
+  // Load cards when the page is accessed
+  useEffect(() => {
+    // Load cards when component mounts
+    loadCards();
+  }, [loadCards]);
+
   // Extract categories from cards
   useEffect(() => {
     if (allCards.length > 0) {

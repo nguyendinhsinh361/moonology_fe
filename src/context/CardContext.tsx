@@ -134,10 +134,10 @@ export const CardProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return drawnCards;
   };
 
-  // Load cards on mount
+  // Don't automatically load cards on mount
+  // Only load when explicitly requested by components that need the data
   useEffect(() => {
-    console.log('CardContext useEffect triggered');
-    loadCards();
+    console.log('CardContext mounted - cards will be loaded when needed');
   }, []);
 
   const value = {
