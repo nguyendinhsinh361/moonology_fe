@@ -20,6 +20,8 @@ COPY .env* ./
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV NEXT_CACHE=false
+ENV NEXT_PUBLIC_DISABLE_CACHE=true
+ENV NEXT_PUBLIC_TIMESTAMP=$(date +%s)
 
 # Build the application
 RUN npm run build
