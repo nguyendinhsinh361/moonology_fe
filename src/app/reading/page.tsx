@@ -18,6 +18,7 @@ import { API_ENDPOINTS, ASSET_URLS } from '@/config/api';
 export default function ReadingPage() {
   const router = useRouter();
   const [selectedCards, setSelectedCards] = useState<TarotCard[]>([]);
+  const [userThoughts, setUserThoughts] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [interpretation, setInterpretation] = useState('');
   const [chatMessage, setChatMessage] = useState('');
@@ -27,10 +28,8 @@ export default function ReadingPage() {
   const [readingId, setReadingId] = useState<string | null>(null);
   const hasCalledAPI = useRef(false);
 
-  const MESSAGE_TO_AI = "Xin hãy giải thích ý nghĩa của các thẻ tôi bốc ra ở trên chi tiết giúp tôi";
-
   // Get reading from API
-  const getReading = useCallback(async (cards: TarotCard[]) => {
+  const getReading = useCallback(async (cards: TarotCard[], thoughts: string = '') => {
     // Prevent multiple API calls
     if (hasCalledAPI.current) {
       console.log('API already called, skipping...');
@@ -41,6 +40,14 @@ export default function ReadingPage() {
     console.log('Calling API for reading...');
     setIsLoading(true);
     
+    // Use user thoughts if available, otherwise use default message
+    let userInput = ""
+    if (thoughts.trim()) {
+      userInput = `Trước khi rút bài tôi đã thực sự suy nghĩ về: "${thoughts.trim()}". Xin hãy giải thích ý nghĩa của các thẻ tôi bốc ra ở trên chi tiết giúp tôi`
+    } else {
+      userInput = "Xin hãy giải thích ý nghĩa của các thẻ tôi bốc ra ở trên chi tiết giúp tôi";
+    }
+    
     try {
       const response = await fetch(API_ENDPOINTS.CHAT, {
         method: 'POST',
@@ -49,7 +56,7 @@ export default function ReadingPage() {
         },
         body: JSON.stringify({ 
           cards,
-          user_input: MESSAGE_TO_AI
+          user_input: userInput
         })
       });
       
@@ -94,8 +101,10 @@ export default function ReadingPage() {
   }, []);
 
   useEffect(() => {
-    // Get selected cards from sessionStorage
+    // Get selected cards and user thoughts from sessionStorage
     const storedCards = sessionStorage.getItem('selectedCards');
+    const storedThoughts = sessionStorage.getItem('userThoughts');
+    
     if (!storedCards) {
       router.push('/cards');
       return;
@@ -105,10 +114,15 @@ export default function ReadingPage() {
       const cards = JSON.parse(storedCards);
       setSelectedCards(cards);
       
-      // Get reading from API
-      getReading(cards);
+      // Set user thoughts if available
+      if (storedThoughts) {
+        setUserThoughts(storedThoughts);
+      }
+      
+      // Get reading from API with user thoughts
+      getReading(cards, storedThoughts || '');
     } catch (error) {
-      console.error('Error parsing stored cards:', error);
+      console.error('Error parsing stored data:', error);
       router.push('/cards');
     }
 

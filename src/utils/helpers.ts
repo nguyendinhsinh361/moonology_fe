@@ -82,7 +82,7 @@ export const formatAIResponse = (content: string): string => {
       }
     }
     
-    return `<h3><span class="section-number">${number}.</span> <span class="section-icon">${icon}</span> ${title}</h3>`;
+    return `<div class="section-header"><span class="section-number">${number}.</span> <span class="section-icon">${icon}</span> ${title}</div>`;
   });
   
   // Convert sub-numbered lists (1.1, 1.2, etc.)
@@ -105,17 +105,17 @@ export const formatAIResponse = (content: string): string => {
   // Clean up empty paragraphs
   formattedContent = formattedContent.replace(/<p>\s*<\/p>/g, '');
   
-  // Add highlights for important words
+  // Add highlights for important words - but be more conservative
   formattedContent = formattedContent.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
   formattedContent = formattedContent.replace(/\*(.*?)\*/g, '<em>$1</em>');
   
   // Convert quotes
   formattedContent = formattedContent.replace(/^["""](.*?)["""]$/gm, '<blockquote>$1</blockquote>');
   
-  // Add mystical highlights
-  const mysticalWords = ['vũ trụ', 'mặt trăng', 'sao', 'huyền bí', 'chiêm tinh', 'năng lượng', 'tâm linh'];
+  // Add mystical highlights - but only for specific important words
+  const mysticalWords = ['vũ trụ', 'mặt trăng', 'năng lượng'];
   mysticalWords.forEach(word => {
-    const regex = new RegExp(`(${word})`, 'gi');
+    const regex = new RegExp(`\\b(${word})\\b`, 'gi');
     formattedContent = formattedContent.replace(regex, '<span class="highlight">$1</span>');
   });
 

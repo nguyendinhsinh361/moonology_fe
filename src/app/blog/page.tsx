@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, Suspense } from 'react';
 import Layout from '@/components/layout/Layout';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -50,7 +50,8 @@ interface BlogData {
   categories: string[];
 }
 
-export default function BlogPage() {
+// Component that uses useSearchParams - needs to be wrapped in Suspense
+function BlogContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   
@@ -348,5 +349,26 @@ export default function BlogPage() {
         </div>
       )}
     </Layout>
+  );
+}
+
+// Loading fallback component
+function BlogLoading() {
+  return (
+    <Layout>
+      <div className="loading-container">
+        <FontAwesomeIcon icon={faSpinner} spin className="text-4xl text-cosmic-purple" />
+        <p className="mt-4 text-lg">Đang tải bài viết...</p>
+      </div>
+    </Layout>
+  );
+}
+
+// Main page component with Suspense boundary
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<BlogLoading />}>
+      <BlogContent />
+    </Suspense>
   );
 }

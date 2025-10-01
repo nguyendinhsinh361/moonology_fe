@@ -41,6 +41,8 @@ export default function CardsPage() {
   const [categoryFilter, setCategoryFilter] = useState('');
   const [searchFilter, setSearchFilter] = useState('');
   const [categories, setCategories] = useState<string[]>([]);
+  const [userThoughts, setUserThoughts] = useState('');
+  const [showThoughtsInput, setShowThoughtsInput] = useState(false);
 
   // Extract categories from cards
   useEffect(() => {
@@ -103,8 +105,9 @@ export default function CardsPage() {
   const handleStartReading = () => {
     if (selectedCards.length === 0) return;
     
-    // Store selected cards in sessionStorage for the reading page
+    // Store selected cards and user thoughts in sessionStorage for the reading page
     sessionStorage.setItem('selectedCards', JSON.stringify(selectedCards));
+    sessionStorage.setItem('userThoughts', userThoughts);
     
     // Navigate to reading page
     router.push('/reading');
@@ -125,6 +128,81 @@ export default function CardsPage() {
           <p className="text-center text-text-secondary mb-8">
             Hãy để trực giác dẫn dắt bạn và chọn những lá bài mà bạn cảm thấy có sự kết nối
           </p>
+
+          {/* User Thoughts Input Section */}
+          <div className="user-thoughts-section">
+            <div className="thoughts-header">
+              <h3 className="thoughts-title">
+                <FontAwesomeIcon icon={faMoon} className="thoughts-icon" />
+                Suy nghĩ và mong muốn của bạn
+              </h3>
+              <p className="thoughts-description">
+                Hãy chia sẻ những điều bạn đang băn khoăn, mong muốn hoặc câu hỏi mà bạn muốn tìm câu trả lời. 
+                Điều này sẽ giúp vũ trụ hiểu rõ hơn về tình huống của bạn và đưa ra lời giải chính xác hơn.
+              </p>
+            </div>
+            
+            <div className="thoughts-input-container">
+              {!showThoughtsInput ? (
+                <button 
+                  className="thoughts-toggle-btn"
+                  onClick={() => setShowThoughtsInput(true)}
+                >
+                  <FontAwesomeIcon icon={faMoon} />
+                  <span>Chia sẻ suy nghĩ của bạn</span>
+                </button>
+              ) : (
+                <div className="thoughts-input-wrapper">
+                  <textarea
+                    className="thoughts-textarea"
+                    placeholder="Hãy viết ra những điều bạn đang băn khoăn, mong muốn hoặc câu hỏi mà bạn muốn tìm câu trả lời..."
+                    value={userThoughts}
+                    onChange={(e) => setUserThoughts(e.target.value)}
+                    rows={4}
+                  />
+                  <div className="thoughts-actions">
+                    <button 
+                      className="thoughts-save-btn"
+                      onClick={() => setShowThoughtsInput(false)}
+                      disabled={!userThoughts.trim()}
+                    >
+                      <FontAwesomeIcon icon={faCheck} />
+                      <span>Lưu suy nghĩ</span>
+                    </button>
+                    <button 
+                      className="thoughts-cancel-btn"
+                      onClick={() => {
+                        setShowThoughtsInput(false);
+                        setUserThoughts('');
+                      }}
+                    >
+                      <FontAwesomeIcon icon={faRefresh} />
+                      <span>Bỏ qua</span>
+                    </button>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {userThoughts && (
+              <div className="thoughts-preview">
+                <div className="thoughts-preview-header">
+                  <FontAwesomeIcon icon={faStar} className="preview-icon" />
+                  <span>Suy nghĩ của bạn:</span>
+                </div>
+                <div className="thoughts-preview-content">
+                  {userThoughts}
+                </div>
+                <button 
+                  className="thoughts-edit-btn"
+                  onClick={() => setShowThoughtsInput(true)}
+                >
+                  <FontAwesomeIcon icon={faRefresh} />
+                  <span>Chỉnh sửa</span>
+                </button>
+              </div>
+            )}
+          </div>
 
           {/* Card Shuffling and Drawing Section */}
           <div className="card-shuffling-section">

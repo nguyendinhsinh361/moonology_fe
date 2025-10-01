@@ -50,7 +50,8 @@
 }
 
 .interpretation-content h3 {
-  @apply text-lg sm:text-xl font-bold text-cosmic-purple mb-3 sm:mb-4 flex items-center gap-2;
+  @apply text-lg sm:text-xl font-bold text-text-primary mb-3 sm:mb-4 flex items-center gap-2;
+  color: var(--text-primary) !important;
 }
 
 .interpretation-content h4 {
@@ -111,23 +112,35 @@
 }
 
 .interpretation-content .highlight {
-  @apply text-cosmic-purple font-medium;
+  @apply text-text-accent font-medium;
 }
 
 .interpretation-content blockquote {
   @apply italic border-l-4 border-cosmic-purple/50 pl-4 py-1 my-4 text-text-secondary;
 }
 
+.interpretation-content strong {
+  @apply text-text-primary font-semibold;
+  color: var(--text-primary) !important;
+}
+
 .interpretation-content .section-number {
   @apply text-star-gold mr-2;
+  color: var(--star-gold) !important;
 }
 
 .interpretation-content .section-icon {
   @apply mr-2;
 }
 
+.interpretation-content .section-header {
+  @apply text-lg sm:text-xl font-bold text-text-primary mb-3 sm:mb-4 flex items-center gap-2;
+  color: var(--text-primary) !important;
+}
+
 .interpretation-content .subsection-number {
-  @apply text-cosmic-purple mr-2;
+  @apply text-text-accent mr-2;
+  color: var(--text-accent) !important;
 }
 
 /* Loading state for interpretation */

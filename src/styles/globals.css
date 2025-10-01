@@ -743,3 +743,299 @@
     @apply grid-cols-2 gap-4;
   }
 }
+
+/* User Thoughts Section Styles */
+.user-thoughts-section {
+  @apply mb-8 p-6 rounded-2xl bg-gradient-to-br from-cosmic-purple/10 to-mystic-blue/10 border border-cosmic-purple/20 backdrop-blur-sm;
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.1);
+}
+
+.thoughts-header {
+  @apply text-center mb-6;
+}
+
+.thoughts-title {
+  @apply text-2xl font-bold text-text-primary mb-3 flex items-center justify-center gap-3;
+}
+
+.thoughts-icon {
+  @apply text-cosmic-purple text-2xl;
+}
+
+.thoughts-description {
+  @apply text-text-secondary text-base leading-relaxed max-w-3xl mx-auto;
+}
+
+.thoughts-input-container {
+  @apply mb-4;
+}
+
+.thoughts-toggle-btn {
+  @apply w-full py-4 px-6 rounded-xl bg-gradient-to-r from-cosmic-purple to-mystic-blue text-white font-semibold text-lg transition-all duration-300 hover:shadow-lg hover:shadow-cosmic-purple/25 hover:scale-105 flex items-center justify-center gap-3;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.thoughts-toggle-btn:hover {
+  transform: translateY(-2px);
+}
+
+.thoughts-input-wrapper {
+  @apply space-y-4;
+}
+
+.thoughts-textarea {
+  @apply w-full p-4 rounded-xl border-2 border-cosmic-purple/30 bg-surface-dark text-text-primary placeholder-text-muted resize-none transition-all duration-300 focus:border-cosmic-purple focus:ring-2 focus:ring-cosmic-purple/20 focus:outline-none;
+  min-height: 120px;
+}
+
+.thoughts-textarea:focus {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+.thoughts-actions {
+  @apply flex gap-3 justify-end;
+}
+
+.thoughts-save-btn {
+  @apply px-6 py-3 rounded-lg bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-green-500/25 hover:scale-105 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+}
+
+.thoughts-cancel-btn {
+  @apply px-6 py-3 rounded-lg bg-gradient-to-r from-gray-500 to-gray-600 text-white font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-gray-500/25 hover:scale-105 flex items-center gap-2;
+}
+
+.thoughts-preview {
+  @apply p-4 rounded-xl bg-gradient-to-br from-cosmic-purple/5 to-mystic-blue/5 border border-cosmic-purple/10;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.1);
+}
+
+.thoughts-preview-header {
+  @apply flex items-center gap-2 mb-3 text-cosmic-purple font-semibold;
+}
+
+.preview-icon {
+  @apply text-lg;
+}
+
+.thoughts-preview-content {
+  @apply text-text-primary mb-3 p-3 rounded-lg bg-surface-dark text-sm leading-relaxed;
+}
+
+.thoughts-edit-btn {
+  @apply px-4 py-2 rounded-lg bg-cosmic-purple/10 text-cosmic-purple font-medium transition-all duration-300 hover:bg-cosmic-purple/20 hover:scale-105 flex items-center gap-2 text-sm;
+}
+
+/* Responsive adjustments for thoughts section */
+@media (max-width: 768px) {
+  .user-thoughts-section {
+    @apply p-4 mb-6;
+  }
+  
+  .thoughts-title {
+    @apply text-xl;
+  }
+  
+  .thoughts-description {
+    @apply text-sm;
+  }
+  
+  .thoughts-toggle-btn {
+    @apply py-3 px-4 text-base;
+  }
+  
+  .thoughts-actions {
+    @apply flex-col;
+  }
+  
+  .thoughts-save-btn,
+  .thoughts-cancel-btn {
+    @apply w-full justify-center;
+  }
+}
+
+/* Start Reading Button Section - Cards Page */
+.start-reading-section {
+  @apply flex justify-center mt-6 sm:mt-8 md:mt-10 px-4;
+}
+
+.start-reading-btn {
+  @apply relative bg-gradient-to-r from-cosmic-purple via-mystic-blue to-cosmic-purple text-moon-white py-3 sm:py-4 md:py-5 px-6 sm:px-8 md:px-12 rounded-cosmic font-bold text-base sm:text-lg md:text-xl transition-all duration-300 hover:scale-105 hover:shadow-glow-purple active:scale-95 overflow-hidden border-2 border-cosmic-purple/50 w-full max-w-sm sm:max-w-md md:max-w-lg;
+  background-size: 200% 200%;
+  animation: gradient-shift 3s ease-in-out infinite;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.3), 0 0 50px rgba(99, 102, 241, 0.2);
+}
+
+.start-reading-btn:hover {
+  background-position: 100% 100%;
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.5), 0 0 70px rgba(99, 102, 241, 0.3);
+}
+
+.start-reading-btn-icon {
+  @apply mr-2 sm:mr-3 text-star-gold text-base sm:text-lg md:text-xl;
+}
+
+.start-reading-btn-glow {
+  @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent transform -skew-x-12 -translate-x-full transition-transform duration-700;
+}
+
+.start-reading-btn:hover .start-reading-btn-glow {
+  @apply translate-x-full;
+}
+
+/* Drawn Cards Area - Improved responsive */
+.drawn-cards-area {
+  @apply max-h-0 overflow-hidden transition-all duration-500 ease-out opacity-0;
+}
+
+.drawn-cards-area.show {
+  @apply max-h-[800px] sm:max-h-[700px] md:max-h-[600px] opacity-100 mt-4 sm:mt-6 md:mt-8;
+}
+
+.draw-message {
+  @apply text-center text-sm sm:text-base md:text-lg text-text-accent mb-3 sm:mb-4 md:mb-6 font-medium px-4;
+}
+
+.drawn-cards-container {
+  @apply flex flex-wrap justify-center gap-3 sm:gap-4 md:gap-6 px-4;
+}
+
+/* Responsive improvements for cards page */
+@media (max-width: 640px) {
+  .start-reading-section {
+    @apply mt-4 px-2;
+  }
+  
+  .start-reading-btn {
+    @apply py-3 px-4 text-sm;
+  }
+  
+  .drawn-cards-area.show {
+    @apply max-h-[900px] mt-3;
+  }
+  
+  .drawn-cards-container {
+    @apply gap-2 px-2;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .start-reading-section {
+    @apply mt-6 px-3;
+  }
+  
+  .start-reading-btn {
+    @apply py-4 px-6 text-base;
+  }
+  
+  .drawn-cards-area.show {
+    @apply max-h-[750px] mt-5;
+  }
+}
+
+@media (min-width: 769px) {
+  .start-reading-section {
+    @apply mt-8 px-4;
+  }
+  
+  .start-reading-btn {
+    @apply py-5 px-8 text-lg;
+  }
+  
+  .drawn-cards-area.show {
+    @apply max-h-[600px] mt-6;
+  }
+}
+
+/* Keyframes for gradient animation */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* Card Shuffling Section - Improved responsive */
+.card-shuffling-section {
+  @apply mb-6 sm:mb-8 md:mb-10;
+}
+
+.deck-container {
+  @apply flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-6 sm:mb-8;
+}
+
+.deck-info {
+  @apply text-center sm:text-left;
+}
+
+.deck-info h3 {
+  @apply text-lg sm:text-xl md:text-2xl font-bold text-text-primary mb-2;
+}
+
+.deck-info p {
+  @apply text-sm sm:text-base text-text-secondary mb-3;
+}
+
+.shuffle-status {
+  @apply flex items-center justify-center sm:justify-start gap-2 text-sm sm:text-base text-text-accent;
+}
+
+.shuffle-controls {
+  @apply flex justify-center;
+}
+
+.shuffle-btn, .draw-btn {
+  @apply relative py-3 sm:py-4 px-6 sm:px-8 rounded-xl font-semibold text-sm sm:text-base md:text-lg transition-all duration-300 flex items-center gap-2 sm:gap-3 w-full max-w-xs sm:max-w-sm md:max-w-md;
+}
+
+.shuffle-btn {
+  @apply bg-gradient-to-r from-cosmic-purple to-mystic-blue text-white hover:scale-105 hover:shadow-lg;
+}
+
+.draw-btn {
+  @apply bg-gradient-to-r from-green-500 to-green-600 text-white hover:scale-105 hover:shadow-lg;
+}
+
+.shuffle-btn:disabled, .draw-btn:disabled {
+  @apply opacity-50 cursor-not-allowed hover:scale-100;
+}
+
+/* Responsive improvements for mobile */
+@media (max-width: 640px) {
+  .deck-container {
+    @apply flex-col gap-3 mb-4;
+  }
+  
+  .deck-info {
+    @apply text-center;
+  }
+  
+  .shuffle-status {
+    @apply justify-center;
+  }
+  
+  .shuffle-btn, .draw-btn {
+    @apply py-3 px-4 text-sm w-full max-w-xs;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 768px) {
+  .deck-container {
+    @apply flex-row gap-4 mb-6;
+  }
+  
+  .shuffle-btn, .draw-btn {
+    @apply py-4 px-6 text-base max-w-sm;
+  }
+}
+
+@media (min-width: 769px) {
+  .deck-container {
+    @apply flex-row gap-6 mb-8;
+  }
+  
+  .shuffle-btn, .draw-btn {
+    @apply py-4 px-8 text-lg max-w-md;
+  }
+}
