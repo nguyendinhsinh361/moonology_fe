@@ -271,13 +271,13 @@ export default function ContactPage() {
               <h3>Kết nối với chúng tôi</h3>
               <div className="social-links">
                 <a href={contactInfo.socialMedia.facebook} target="_blank" rel="noopener noreferrer" className="social-link facebook">
-                  <FontAwesomeIcon icon={faFacebookF} />
+                  <FontAwesomeIcon icon={faFacebookF as any} />
                 </a>
                 <a href={contactInfo.socialMedia.instagram} target="_blank" rel="noopener noreferrer" className="social-link instagram">
-                  <FontAwesomeIcon icon={faInstagram} />
+                  <FontAwesomeIcon icon={faInstagram as any} />
                 </a>
                 <a href={contactInfo.socialMedia.youtube} target="_blank" rel="noopener noreferrer" className="social-link youtube">
-                  <FontAwesomeIcon icon={faYoutube} />
+                  <FontAwesomeIcon icon={faYoutube as any} />
                 </a>
               </div>
             </div>
