@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  moonology-fe:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_BACKEND_URL=http://moonology-be:8000
+    depends_on:
+      - moonology-be
+    networks:
+      - moonology-network
+
+  moonology-be:
+    build: ../moonology_be
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    networks:
+      - moonology-network
+
+networks:
+  moonology-network:
+    driver: bridge
