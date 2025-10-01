@@ -52,7 +52,7 @@ const TarotCard: React.FC<TarotCardProps> = ({ card, isSelected = false, onClick
       <div className="card-content">
         <div className="card-title">{cardTitle}</div>
         {cardKind && <div className="card-category">{cardKind}</div>}
-        {shortMeaning && <div className="card-short-meaning">"{shortMeaning}"</div>}
+        {shortMeaning && <div className="card-short-meaning">&ldquo;{shortMeaning}&rdquo;</div>}
       </div>
     </div>
   );

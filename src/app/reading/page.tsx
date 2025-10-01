@@ -28,6 +28,45 @@ export default function ReadingPage() {
   const [readingId, setReadingId] = useState<string | null>(null);
   const hasCalledAPI = useRef(false);
 
+  // Get suggestions from API
+  const getSuggestions = useCallback(async () => {
+    // Only get suggestions if we have a session_id
+    if (!readingId) {
+      console.log('Skipping suggestions request - no session_id available');
+      return;
+    }
+    
+    try {
+      console.log('Getting suggestions with session_id:', readingId);
+      const response = await fetch(API_ENDPOINTS.SUGGESTIONS, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          cards: selectedCards,
+          session_id: readingId
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const data = await response.json();
+      console.log('Suggestions API Response:', data);
+      
+      if (data.success && data.suggestions) {
+        setSuggestions(data.suggestions);
+      } else if (data.suggestions) {
+        // Alternative response format
+        setSuggestions(data.suggestions);
+      }
+    } catch (error) {
+      console.error('Error getting suggestions:', error);
+    }
+  }, [readingId, selectedCards]);
+
   // Get reading from API
   const getReading = useCallback(async (cards: TarotCard[], thoughts: string = '') => {
     // Prevent multiple API calls
@@ -98,7 +137,7 @@ export default function ReadingPage() {
     } finally {
       setIsLoading(false);
     }
-  }, []);
+  }, [getSuggestions]);
 
   useEffect(() => {
     // Get selected cards and user thoughts from sessionStorage
@@ -127,45 +166,6 @@ export default function ReadingPage() {
     }
 
   }, [getReading, router]);
-
-  // Get suggestions from API
-  const getSuggestions = async () => {
-    // Only get suggestions if we have a session_id
-    if (!readingId) {
-      console.log('Skipping suggestions request - no session_id available');
-      return;
-    }
-    
-    try {
-      console.log('Getting suggestions with session_id:', readingId);
-      const response = await fetch(API_ENDPOINTS.SUGGESTIONS, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ 
-          cards: selectedCards,
-          session_id: readingId
-        }),
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const data = await response.json();
-      console.log('Suggestions API Response:', data);
-      
-      if (data.success && data.suggestions) {
-        setSuggestions(data.suggestions);
-      } else if (data.suggestions) {
-        // Alternative response format
-        setSuggestions(data.suggestions);
-      }
-    } catch (error) {
-      console.error('Error getting suggestions:', error);
-    }
-  };
 
   // Send chat message to API
   const sendChatMessage = async () => {

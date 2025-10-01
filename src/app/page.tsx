@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import Layout from '@/components/layout/Layout';
 import LoadingOverlay from '@/components/layout/LoadingOverlay';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +16,7 @@ export default function Home() {
   const [failedImages, setFailedImages] = useState<string[]>([]);
   
   // Key images to preload
-  const keyImages = [
+  const keyImages = useMemo(() => [
     ASSET_URLS.CARD_IMAGE('New_Moon'),
     ASSET_URLS.CARD_IMAGE('Full_Moon'),
     ASSET_URLS.CARD_IMAGE('First_Quarter_Moon'),
@@ -25,7 +25,7 @@ export default function Home() {
     ASSET_URLS.CARD_IMAGE('Waning_Moon'),
     ASSET_URLS.CARD_IMAGE('Blue_Moon'),
     ASSET_URLS.CARD_IMAGE('Supermoon')
-  ];
+  ], []);
 
   // Gallery images
   const galleryImages = [
@@ -99,7 +99,7 @@ export default function Home() {
     return () => {
       if (moonPhaseInterval) clearInterval(moonPhaseInterval);
     };
-  }, []);
+  }, [keyImages]);
 
   return (
     <>
