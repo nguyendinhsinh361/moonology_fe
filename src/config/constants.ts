@@ -5,7 +5,7 @@
  */
 
 // Backend API URL
-export const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+export const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:8000';
 
 // Other constants
 export const MAX_SELECTED_CARDS = parseInt(process.env.NEXT_PUBLIC_MAX_SELECTED_CARDS || '3', 10);

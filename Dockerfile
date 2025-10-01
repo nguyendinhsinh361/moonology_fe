@@ -1,29 +1,26 @@
-# Use the official Node.js 18 image as base
+# Use Node.js 18 as base image
 FROM node:18-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files
-COPY package*.json ./
+# Copy package.json and package-lock.json
+COPY package.json package-lock.json ./
 
-# Install ALL dependencies (including dev dependencies for build)
+# Install dependencies
 RUN npm ci
 
-# Copy source code
+# Copy the rest of the application
 COPY . .
+
+# Copy environment variables from .env file
+COPY .env* ./
 
 # Build the application
 RUN npm run build
 
-# Remove dev dependencies after build
-RUN npm prune --production
-
-# Expose port 3000
+# Expose the port the app runs on
 EXPOSE 3000
-
-# Set environment to production
-ENV NODE_ENV=production
 
 # Start the application
 CMD ["npm", "start"]
