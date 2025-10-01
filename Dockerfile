@@ -16,18 +16,11 @@ COPY . .
 # Copy environment variables from .env file
 COPY .env* ./
 
-# Set environment variables to disable caching
-ENV NODE_ENV=production
-ENV NEXT_TELEMETRY_DISABLED=1
-ENV NEXT_CACHE=false
-ENV NEXT_PUBLIC_DISABLE_CACHE=true
-ENV NEXT_PUBLIC_TIMESTAMP=$(date +%s)
-
 # Build the application
 RUN npm run build
 
 # Expose the port the app runs on
 EXPOSE 3000
 
-# Start the application with cache headers disabled
+# Start the application
 CMD ["npm", "start"]

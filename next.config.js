@@ -29,25 +29,6 @@ const nextConfig = {
     locales: ['vi'],
     defaultLocale: 'vi',
   },
-  
-  // Cấu hình headers để giải quyết vấn đề "Provisional headers are shown"
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, must-revalidate',
-          },
-          {
-            key: 'Pragma',
-            value: 'no-cache',
-          },
-        ],
-      },
-    ]
-  },
 }
 
 module.exports = nextConfig
