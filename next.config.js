@@ -3,8 +3,8 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
-    unoptimized: true, // Để hình ảnh không bị tối ưu hóa, giữ nguyên chất lượng
+    domains: ['localhost', 'ec2-3-89-255-128.compute-1.amazonaws.com'],
+    unoptimized: false, // Bật tối ưu hóa hình ảnh
     remotePatterns: [
       {
         protocol: 'http',
@@ -17,12 +17,23 @@ const nextConfig = {
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384], // Các kích thước hình ảnh cho responsive images
   },
     
-  // Tắt cảnh báo hydration
+  // Cấu hình tối ưu hóa
   onDemandEntries: {
     // Tăng thời gian giữ trang trong bộ nhớ cache
-    maxInactiveAge: 25 * 1000,
-    pagesBufferLength: 5,
+    maxInactiveAge: 60 * 1000, // 1 phút
+    pagesBufferLength: 3,
   },
+  
+  // Tối ưu bundle size
+  swcMinify: true,
+  
+  // Tối ưu hóa production build
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+  
+  // Bật tính năng compression
+  compress: true,
   
   // Cấu hình responsive
   i18n: {
